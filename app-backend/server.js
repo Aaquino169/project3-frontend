@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 
 const cors = require('cors')
 
+
 const port = 8000
 
 // const whitelist = ["http://localhost:8000"]
@@ -20,6 +21,7 @@ const port = 8000
 // }
 
 // app.use(cors(corsOptions))
+
 
 app.use(express.json())
 
