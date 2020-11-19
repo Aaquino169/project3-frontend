@@ -1,10 +1,14 @@
 const express = require('express')
 
-const app = express()
-
 const mongoose = require('mongoose')
 
+const session = require('express-session')
+
 const cors = require('cors')
+
+const app = express()
+
+
 
 
 const port = 8000
@@ -25,6 +29,9 @@ const port = 8000
 
 app.use(express.json())
 
+//middleware for sessions
+app.use( session({ secret: 'i love shopping',resave: false,saveUninitialized: false}))
+
 
 
 //middleware for mongoose
@@ -40,6 +47,9 @@ app.use('/', storeController)
 
 const usersController = require('./controllers/users')
 app.use('/user', usersController)
+
+const sessionsController = require('./controllers/session')
+app.use('/login', sessionsController)
 
 app.listen(port, () => {
     console.log('app is running on port:',port)
