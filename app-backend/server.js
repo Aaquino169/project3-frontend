@@ -8,7 +8,7 @@ const cors = require('cors')
 
 const port = 8000
 
-// const whitelist = ['http://localhost:3000']
+// const whitelist = ["http://localhost:8000"]
 // const corsOptions = {
 //     origin: (origin, callback) => {
 //       if (whitelist.indexOf(origin) !== -1) {
@@ -18,7 +18,7 @@ const port = 8000
 //       }
 //     }
 // }
-//
+
 // app.use(cors(corsOptions))
 
 app.use(express.json())

@@ -6,3 +6,6 @@ const userSchema = mongoose.Schema({
     password: {type:String, require:true},
     cart: []
 })
+
+const Users = mongoose.model('Users', userSchema)
+module.exports = Users
