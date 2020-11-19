@@ -38,6 +38,8 @@ mongoose.connection.on('disconnected', () =>console.log('mongo disconnected'))
 const storeController = require('./controllers/store')
 app.use('/', storeController)
 
+const usersController = require('./controllers/users')
+app.use('/user', usersController)
 
 app.listen(port, () => {
     console.log('app is running on port:',port)
