@@ -1,5 +1,6 @@
 const express = require('express')
 const store =  express.Router()
+const Merch = require('../models/merch')
 
 //index route
 store.get('/', (req,res) => {
