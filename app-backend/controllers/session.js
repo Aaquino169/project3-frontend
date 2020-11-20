@@ -14,9 +14,9 @@ sessions.post('/', (req,res) => {
             console.log('no user with that username')
         }else{
             if (bcrypt.compareSync(req.body.password, foundUser.password)) {
-                // console.log(res)
                 req.session.currentUser = foundUser
                 console.log(req.session.currentUser)
+                //can redirect to home page while staying logged in?
             } else {
                 console.log('password is incorrect')
             }
@@ -25,5 +25,12 @@ sessions.post('/', (req,res) => {
 })
 
 //logout of sessions
+
+sessions.delete('/', (req, res) => {
+    req.session.destroy(() => {
+        //redirect to home page?
+    //   res.redirect('/')
+    })
+  })
 
 module.exports = sessions
