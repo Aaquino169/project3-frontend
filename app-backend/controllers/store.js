@@ -13,17 +13,6 @@ store.get('/', (req,res) => {
     })
 })
 
-//delete route
-store.delete('/:id', (req,res) => {
-    Merch.findByIdAndRemove( req.params.id, (err ,deletedMerch) => {
-        if(err){
-            res.status(400).json({ err: err.message})
-        }
-        console.log('Deleted Merch:', deletedMerch )
-        res.status(200).send(deletedMerch)
-    })
-})
-
 //create route
 store.post('/', async (req,res) => {
     Merch.create( req.body, (err, createdMerch) => {
@@ -35,7 +24,39 @@ store.post('/', async (req,res) => {
     })
 })
 
-//
+//search route
+store.get('/searchName/:text', async (req,res) => {
+    
+    await Merch.find({"name": req.params.text}, (err, targetMerch) => {
+        if(err){
+            res.status(400).json({ err: err.message})
+        }
+        console.log('Searched Merch:', targetMerch )
+        res.status(200).send(targetMerch)
+    } )
+})
+
+//show route
+//use this route to return the target object
+store.get('/:id', (req,res) => {
+    Merch.findById(req.params.id, (err, targetMerch) => {
+        if (err) {
+            res.status(400).json({ error: err.message })
+        }
+        console.log('Target Merch:', targetMerch )
+        res.status(200).json(targetMerch)
+    })
+})
+//delete route
+store.delete('/:id', (req,res) => {
+    Merch.findByIdAndRemove( req.params.id, (err ,deletedMerch) => {
+        if(err){
+            res.status(400).json({ err: err.message})
+        }
+        console.log('Deleted Merch:', deletedMerch )
+        res.status(200).send(deletedMerch)
+    })
+})
 
 //update route
 store.put('/:id', (req,res) => {
