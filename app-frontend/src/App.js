@@ -1,11 +1,11 @@
 import './App.css';
 import NavBar from './Components/NavComponent'
-import HomeComponent from './Components/route-components/HomeComponent'
+import MerchContainer from './Components/MerchContainer'
 function App() {
   return (
     <div className="App">
         <NavBar />
-        <HomeComponent />
+        <MerchContainer />
     </div>
   );
 }

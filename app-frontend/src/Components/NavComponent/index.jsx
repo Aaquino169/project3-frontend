@@ -4,7 +4,7 @@ import React from 'react'
 export default function NavBar(props){
     return(
         <div class='header-container'>
-        
+
             <div class ='logo'>
                 <h1>
                     logo
@@ -24,9 +24,8 @@ export default function NavBar(props){
 
                 </select>
                 <input type='text' id='searchbar' name='searchbar' placeholder='Search...' />
-                <input type='submit' class='search-btn' />
-            </div>
-
+                <button type='submit'> Search</button>
+            </div> 
             <nav>
 
                 <ul>
@@ -38,6 +37,9 @@ export default function NavBar(props){
                     </td>
                     <td>
                         Cart
+                    </td>
+                    <td>
+                        Log in/Sign Up
                     </td>
                 </ul>
 

@@ -35,6 +35,8 @@ store.post('/', async (req,res) => {
     })
 })
 
+//
+
 //update route
 store.put('/:id', (req,res) => {
     Merch.findOneAndUpdate( req.params.id, req.body, {new: true}, (err, updatedMerch) => {
