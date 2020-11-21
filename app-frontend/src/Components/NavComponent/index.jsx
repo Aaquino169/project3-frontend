@@ -25,8 +25,7 @@ export default function NavBar(props){
                 </select>
                 <input type='text' id='searchbar' name='searchbar' placeholder='Search...' />
                 <button type='submit'> Search</button>
-            </div>
-
+            </div> 
             <nav>
 
                 <ul>
