@@ -2,6 +2,14 @@ const express = require('express')
 const store =  express.Router()
 const Merch = require('../models/merch')
 
+const isAuthenticated = (req, res, next) =>  {
+	if (req.session.currentUser) {
+		return next()
+	} else if(err) {
+		res.status(400).json({ err: err.message})
+	}
+}
+
 //index route
 store.get('/', (req,res) => {
     Merch.find({}, (err, foundMerch) => {
@@ -14,7 +22,7 @@ store.get('/', (req,res) => {
 })
 
 //create route
-store.post('/', async (req,res) => {
+store.post('/', isAuthenticated, async (req,res) => {
     Merch.create( req.body, (err, createdMerch) => {
         if(err){
             res.status(400).json({ err: err.message})
@@ -233,13 +241,66 @@ store.get('/seed', (req,res) => {
 //search route
 store.get('/searchName/:text', async (req,res) => {
     
-    await Merch.find({"name": req.params.text}, (err, targetMerch) => {
+    await Merch.find({"name": req.params.text }, (err, targetMerch) => {
         if(err){
             res.status(400).json({ err: err.message})
         }
         console.log('Searched Merch:', targetMerch )
         res.status(200).send(targetMerch)
-    } )
+    })
+})
+
+//sort routes below
+
+store.get('/sortAccessories' , async (req,res) => {
+    const sort = "Accessories"
+    await Merch.find({"type": "Accessories" }, (err, targetMerch) => {
+        if(err){
+            res.status(400).json({ err: err.message})
+        }
+        console.log('Searched Merch:', targetMerch )
+        res.status(200).send(targetMerch)
+    })
+})
+
+store.get('/sortKeycaps' , async (req,res) => {
+    await Merch.find({"type": "Keycaps" }, (err, targetMerch) => {
+        if(err){
+            res.status(400).json({ err: err.message})
+        }
+        console.log('Searched Merch:', targetMerch )
+        res.status(200).send(targetMerch)
+    })
+})
+
+store.get('/sortCases' , async (req,res) => {
+    await Merch.find({"type": "Cases" }, (err, targetMerch) => {
+        if(err){
+            res.status(400).json({ err: err.message})
+        }
+        console.log('Searched Merch:', targetMerch )
+        res.status(200).send(targetMerch)
+    })
+})
+
+store.get('/sortSwitches' , async (req,res) => {
+    await Merch.find({"type": "Switches" }, (err, targetMerch) => {
+        if(err){
+            res.status(400).json({ err: err.message})
+        }
+        console.log('Searched Merch:', targetMerch )
+        res.status(200).send(targetMerch)
+    })
+})
+
+store.get('/sortPcbBoards' , async (req,res) => {
+    await Merch.find({"type": "PCB Board" }, (err, targetMerch) => {
+        if(err){
+            res.status(400).json({ err: err.message})
+        }
+        console.log('Searched Merch:', targetMerch )
+        res.status(200).send(targetMerch)
+    })
 })
 
 //show route
@@ -253,6 +314,7 @@ store.get('/:id', (req,res) => {
         res.status(200).json(targetMerch)
     })
 })
+
 //delete route
 store.delete('/:id', (req,res) => {
     Merch.findByIdAndRemove( req.params.id, (err ,deletedMerch) => {
@@ -265,7 +327,7 @@ store.delete('/:id', (req,res) => {
 })
 
 //update route
-store.put('/:id', (req,res) => {
+store.put('/:id', isAuthenticated, (req,res) => {
     Merch.findOneAndUpdate( req.params.id, req.body, {new: true}, (err, updatedMerch) => {
         if (err) {
             res.status(400).json({ error: err.message })
@@ -276,7 +338,7 @@ store.put('/:id', (req,res) => {
 })
 
 //buy button
-store.put('/:id/buy', async (req,res) => {
+store.put('/:id/buy', isAuthenticated, async (req,res) => {
     try{
         const updatedMerch = await Merch.findByIdAndUpdate(req.params.id,
             {
