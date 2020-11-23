@@ -25,25 +25,24 @@ export default function NavBar(props){
                 </select>
                 <input type='text' id='searchbar' name='searchbar' placeholder='Search...' />
                 <button type='submit'> Search</button>
-            </div> 
-            <nav>
+            </div>
+            <div class='nav-container'>
+                <nav>
 
-                <ul>
-                    <td>
-                        Log In/Sign Up
-                    </td>
-                    <td>
-                        Orders & Returns
-                    </td>
-                    <td>
-                        Cart
-                    </td>
-                    <td>
-                        Log in/Sign Up
-                    </td>
-                </ul>
+                    <ul class='nav'>
+                        <td>
+                            Log In/Sign Up
+                        </td>
+                        <td>
+                            Orders & Returns
+                        </td>
+                        <td>
+                            Cart
+                        </td>
+                    </ul>
 
-            </nav>
+                </nav>
+            </div>
         </div>
     )
 }

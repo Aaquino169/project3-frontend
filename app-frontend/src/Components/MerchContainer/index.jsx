@@ -42,25 +42,26 @@ export default function CardComponent(props){
         }
     }
 
-
-
-
     return(
-        <div>
+        <div class='container'>
             <h1>Merch</h1>
-            {merch.map(item =>(
-                <ul>
-                    <td class='card'>
-                        <img src={item.img}/>
-                        <h1>{item.name}</h1>
-                        <p>{item.description}</p>
-                        <p><small>{item.type}</small></p>
-                        <button type='button'>Add to Cart</button>
-                        <button type='button'>Save For Later</button>
-                    </td>
-                </ul>
+            <ul class='card-container'>
+                {merch.map(item =>(
 
-            ))}
+                        <td class='card'>
+                            <img src={item.img}/>
+                            <h1>{item.name}</h1>
+                            <p><small>{item.type}</small></p>
+                            <h3>${item.price}</h3>
+                            <div class='btn-div'>
+                                <button type='button'>Add to Cart</button>
+                                <button type='button'>Save For Later</button>
+                            </div>
+                        </td>
+
+
+                ))}
+            </ul>
             < AddMerch />
         </div>
     )

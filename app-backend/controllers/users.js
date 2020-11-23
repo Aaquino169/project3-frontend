@@ -17,7 +17,7 @@ user.post('/new', async (req,res) => {
     })
 })
 
-user.put('/addToCart/:id', async (req/res) => {
+user.put('/addToCart/:id', async (req,res) => {
     try {
         const targetMerch = await Merch.findById(req.params.id)
         Users.cart.push(targetMerch)
@@ -27,9 +27,9 @@ user.put('/addToCart/:id', async (req/res) => {
     }
 })
 
-user.put('/addToCart/:id', async (req/res) => {
-
-})
+// user.put('/addToCart/:id', async (req/res) => {
+//
+// })
 
 
 module.exports = user
