@@ -32,7 +32,7 @@ handleSubmit = (event) => {
    event.preventDefault()
    console.log()
    console.log(`You are trying to ${this.state.action.toLowerCase()} with the following credentials`)
-   console.log(this.state);
+  
    if(this.state.action === "Register") {
       this.props.register(this.state)
     } else {

@@ -23,8 +23,8 @@ const port = 8000
 //       }
 //     }
 // }
-
-app.use(cors(corsOptions))
+//
+// app.use(cors(corsOptions))
 
 
 

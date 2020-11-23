@@ -23,7 +23,6 @@ register = async (registerInfo) => {
   const url = 'http://localhost:8000/user/new'
 
   try {
-      console.log(registerInfo)
       const registerResponse = await fetch(url, {
           method: 'POST',
           body: JSON.stringify(registerInfo),
