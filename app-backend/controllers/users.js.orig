@@ -2,8 +2,10 @@ const express = require('express')
 const bcrypt = require('bcrypt')
 const user = express.Router()
 const Users = require('../models/users')
+<<<<<<< HEAD
+=======
 const Merch = require('../models/merch')
-
+>>>>>>> d2564b86077cf08c5f5f538bb29994588bf16fe5
 
 //create route
 user.post('/new', async (req,res) => {
@@ -17,19 +19,22 @@ user.post('/new', async (req,res) => {
     })
 })
 
-user.put('/addToCart/:id', async (req/res) => {
-    try {
-        const targetMerch = await Merch.findById(req.params.id)
-        Users.cart.push(targetMerch)
+<<<<<<< HEAD
+=======
+// user.put('/addToCart/:id', async (req/res) => {
+//     try {
+//         const targetMerch = await Merch.findById(req.params.id)
+//         Users.cart.push(targetMerch)
 
-    } catch (error) {
+//     } catch (error) {
+        
+//     }
+// })
 
-    }
-})
-
-user.put('/addToCart/:id', async (req/res) => {
-
-})
+// user.put('/addToCart/:id', async (req/res) => {
+    
+// })
 
 
+>>>>>>> d2564b86077cf08c5f5f538bb29994588bf16fe5
 module.exports = user
