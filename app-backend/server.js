@@ -1,12 +1,10 @@
 const express = require('express')
-
-const app = express()
-
 const mongoose = require('mongoose')
-
-// const cors = require('cors')
-
+const session = require('express-session')
+const cors = require('cors')
+const app = express()
 const port = 8000
+
 
 const whitelist = ['http://localhost:3000']
 const corsOptions = {
@@ -21,7 +19,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-app.use(express.json())
+
+
+//middleware for sessions
+app.use( session({ secret: 'i love shopping',resave: false,saveUninitialized: false}))
 
 
 
@@ -36,6 +37,11 @@ mongoose.connection.on('disconnected', () =>console.log('mongo disconnected'))
 const storeController = require('./controllers/store')
 app.use('/', storeController)
 
+const usersController = require('./controllers/users')
+app.use('/user', usersController)
+
+const sessionsController = require('./controllers/session')
+app.use('/login', sessionsController)
 
 app.listen(port, () => {
     console.log('app is running on port:',port)

@@ -46,6 +46,21 @@ store.put('/:id', (req,res) => {
     })
 })
 
+//buy button
+store.put('/:id/buy', async (req,res) => {
+    try{
+        const updatedMerch = await Merch.findByIdAndUpdate(req.params.id,
+            {
+                $inc: {quantity: -1}
+            },
+            {new: true}
+        )
+        console.log(updatedMerch)
+    }catch(err) {
+        console.log(err)
+    }
+})
+
 
 
 
