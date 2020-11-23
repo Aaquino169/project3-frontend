@@ -13,7 +13,8 @@ const isAuthenticated = (req, res, next) =>  {
 }
 
 //create route
-users.post('/new', async (req,res) => {
+users.post('/new', (req,res) => {
+    console.log(req.body)
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
     Users.create( req.body, (err, createdUser) => {
         if(err){

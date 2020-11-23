@@ -6,6 +6,8 @@ const session = require('express-session')
 
 const cors = require('cors')
 
+const bodyParser = require("body-parser")
+
 const app = express()
 
 
@@ -23,14 +25,11 @@ const port = 8000
 //       }
 //     }
 // }
-
-app.use(cors(corsOptions))
-
+// app.use(cors(corsOptions))
 
 
+app.use(bodyParser.json());
 
-//middleware for sessions
-app.use( session({ secret: 'i love shopping',resave: false,saveUninitialized: false}))
 
 //middleware for sessions
 app.use( session({ secret: 'i love shopping',resave: false,saveUninitialized: false}))
