@@ -24,10 +24,13 @@ const port = 8000
 //     }
 // }
 
-// app.use(cors(corsOptions))
+app.use(cors(corsOptions))
 
 
-app.use(express.json())
+
+
+//middleware for sessions
+app.use( session({ secret: 'i love shopping',resave: false,saveUninitialized: false}))
 
 //middleware for sessions
 app.use( session({ secret: 'i love shopping',resave: false,saveUninitialized: false}))
