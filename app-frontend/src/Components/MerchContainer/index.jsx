@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import AddMerch from '../AddMerch'
+
 
 
 export default function CardComponent(props){
@@ -50,12 +52,16 @@ export default function CardComponent(props){
 
                         <td class='card'>
                             <img src={item.img}/>
-                            <h1>{item.name}</h1>
+
+                            <Link to={`/merch/${item._id}`}>
+                                <h1>{item.name}</h1>
+                            </Link>
                             <p><small>{item.type}</small></p>
                             <h3>${item.price}</h3>
                             <div class='btn-div'>
-                                <button type='button'>Add to Cart</button>
-                                <button type='button'>Save For Later</button>
+                                <Link>
+                                    <button type='button' class='add-to-cart'>Add to Cart</button>
+                                </Link>
                             </div>
                         </td>
 

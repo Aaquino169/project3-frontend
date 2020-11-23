@@ -1,7 +1,11 @@
 import React from 'react'
-
+import UserLogin from '../UserLogin'
+import {Link} from 'react-router-dom'
 
 export default function NavBar(props){
+
+
+
     return(
         <div class='header-container'>
 
@@ -12,33 +16,29 @@ export default function NavBar(props){
             </div>
 
             <div class ='search-bar'>
-                <select id='search' name='search'>
 
-                    <option value='all'> All</option>
-                    <option value='keyboards'> Keyboards</option>
-                    <option value='keycaps'> Keycaps</option>
-                    <option value='cases'> Cases</option>
-                    <option value='pcb-boards'> Pcb Boards</option>
-                    <option value='switches'> Switches</option>
-                    <option value='accessories'> Accessories</option>
-
-                </select>
                 <input type='text' id='searchbar' name='searchbar' placeholder='Search...' />
-                <button type='submit'> Search</button>
+                <button type='submit' id='search-btn'> Search</button>
             </div>
             <div class='nav-container'>
                 <nav>
 
                     <ul class='nav'>
-                        <td>
-                            Log In/Sign Up
-                        </td>
+                        <Link to='/login'>
+                            <td>
+                                Welcome, {props.username}
+                            </td>
+                        </Link>
+                        <Link>
                         <td>
                             Orders & Returns
                         </td>
+                        </Link>
+                        <Link>
                         <td>
                             Cart
                         </td>
+                        </Link>
                     </ul>
 
                 </nav>

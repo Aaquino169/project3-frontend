@@ -26,7 +26,7 @@ sessions.post('/', (req,res) => {
 
 //logout of sessions
 
-sessions.delete('/', (req, res) => {
+sessions.delete('/logout', (req, res) => {
     req.session.destroy(() => {
         //redirect to home page?
     //   res.redirect('/')
