@@ -2,7 +2,7 @@
 
 This web application was created using the MERN(Mongodb, Express, React, Node.js) stack.
 
-## Purpose of the Applicaation
+## Purpose of the Application
 We wanted to create an e-commerce website and attempt to replicate some of the features used in today's online market. Features such as an online cart customers can populate with Merchendise, simulate a purchase, and add merchendise to sell. This web application is ment for people who are looking to build a custom keyboard.
 
 ## User Experience
