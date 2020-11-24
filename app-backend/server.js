@@ -24,7 +24,7 @@ const port = 8000
 
 
 app.use(bodyParser.json());
-
+-c
 
 //middleware for sessions
 app.use( session({ secret: 'i love shopping',resave: false,saveUninitialized: false}))
