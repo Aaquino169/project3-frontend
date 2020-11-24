@@ -1,11 +1,13 @@
 const express = require('express')
 const store =  express.Router()
 const Merch = require('../models/merch')
+const Users = require('../models/users')
 
 const isAuthenticated = (req, res, next) =>  {
 	if (req.session.currentUser) {
+        res.status(200).send("logged in")
 		return next()
-	} else if(err) {
+	} else{
 		res.status(400).json({ err: err.message})
 	}
 }
@@ -340,6 +342,7 @@ store.put('/:id', isAuthenticated, (req,res) => {
 //buy button
 store.put('/:id/buy', isAuthenticated, async (req,res) => {
     try{
+        let currentUser = req.session.currentUser
         const updatedMerch = await Merch.findByIdAndUpdate(req.params.id,
             {
                 $inc: {quantity: -1}
@@ -351,9 +354,5 @@ store.put('/:id/buy', isAuthenticated, async (req,res) => {
         console.log(err)
     }
 })
-
-
-
-
 
 module.exports = store

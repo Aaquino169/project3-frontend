@@ -12,6 +12,7 @@ const isAuthenticated = (req, res, next) =>  {
     }
 }
 
+
 //create route
 users.post('/new', (req,res) => {
     console.log(req.body)
@@ -23,6 +24,54 @@ users.post('/new', (req,res) => {
         console.log('User Created:', createdUser )
         res.status(200).send(createdUser)
     })
+})
+
+//buy all in cart route
+users.put('/buyCart', isAuthenticated, async (req,res) => {
+    try {
+        let currentUser = req.session.currentUser
+
+        let userData = await Users.findById(currentUser._id)
+
+        let cart = userData["cart"]
+        
+        console.log(cart)
+
+        while(cart.length > 0) {
+            cart.shift()
+        }
+        // cart.forEach(item => {
+        //     console.log(item)
+        //     Merch.findByIdAndUpdate( item._id,
+        //         {
+        //             $inc: {quantity: -1}
+        //         },
+        //         {new: true}
+            
+        //     )
+        //     // cart.shift()
+        //     cart.splice(cart.indexOf(item), 1)
+        // })
+
+        // for(let i = 0; i <= cart.length ; i++) {
+        //     console.log(cart[i]._id)
+        //     let updatedMerch = await Merch.findByIdAndUpdate( cart[i]._id,
+        //         {
+        //             $inc: {quantity: -1}
+        //         },
+        //         {new: true}
+            
+        //     )
+        //     cart.splice(i,1)
+        // }
+
+        // userData.save()
+
+        res.status(200).send(userData)
+
+    } catch (err) {
+        res.status(400).json({ err: err.message})
+    }
 })
 
 //add to cart
