@@ -10,7 +10,7 @@ export default class LoginRegisterForm extends Component {
     this.state = {
       username: '',
       password: '',
-      action: 'Register' // this will track whether we are logging in or registering
+      action: 'Login'
     }
   }
 
@@ -32,7 +32,7 @@ handleSubmit = (event) => {
    event.preventDefault()
    console.log()
    console.log(`You are trying to ${this.state.action.toLowerCase()} with the following credentials`)
-  
+   console.log(this.state);
    if(this.state.action === "Register") {
       this.props.register(this.state)
     } else {
