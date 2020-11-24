@@ -19,7 +19,6 @@ export default class AddMerch extends Component{
             try{
                 const url = process.env.REACT_APP_API_URL + 'create';
                 const createMerchResponse = await fetch(url,{
-
                     credentials: "include",
                     method: 'POST',
                     headers:{
@@ -30,13 +29,7 @@ export default class AddMerch extends Component{
                 console.log('this: ', createMerchResponse)
                 const createMerchJson = await createMerchResponse.json()
                 if (createMerchResponse.status === 201 || createMerchResponse.status === 200 ){
-                    this.setState({
-                        img: '',
-                        description: '',
-                        type: '',
-                        price:'',
-                        quantity:''
-                    })
+                    this.props.fetchData()
                 }
             } catch(err){
                 console.log('Error adding Merch', err)
@@ -80,8 +73,6 @@ export default class AddMerch extends Component{
                         <input type='number' name='price' value={this.state.price} onChange={this.handleChange}/>
                         <label>Quantity</label>
                         <input type='number' name='quantity' value={this.state.quantity} onChange={this.handleChange}/>
-
-
 
                     <button type='submit' onClick={this.test}>Submit </button>
                 </form>

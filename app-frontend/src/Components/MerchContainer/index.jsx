@@ -38,7 +38,7 @@ export default function CardComponent(props){
 
             const createMerchJson = await reduceMerchResponse.json()
             console.log(createMerchJson)
-
+            fetchData()
             }catch(err){
                 console.log('Error with buy merch: ',err)
         }
@@ -55,10 +55,9 @@ export default function CardComponent(props){
                     'Content-Type': 'application/json'
                 },
             })
-
             const buyMerchJson = await buyMerchResponse.json()
             console.log(buyMerchJson)
-
+            fetchData()
             }catch(err){
                 console.log('Error with buy merch: ',err)
         }
@@ -88,9 +87,9 @@ export default function CardComponent(props){
                     ))}
                 </ul>
             </Router>
-            <AddMerch/>
+            <AddMerch fetchData={fetchData}/>
         </div>
     )
-     
+
 
 }
