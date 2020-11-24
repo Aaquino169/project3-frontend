@@ -3,6 +3,8 @@ import './App.css';
 import MerchContainer from './Components/MerchContainer'
 import NavBar from './Components/NavComponent'
 import UserLogin from './Components/UserLogin'
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import Merch from './Components/Merch'
 
 
 export default class App extends Component {
@@ -13,6 +15,7 @@ export default class App extends Component {
       loggedIn: false,
       loggedInUsername: '',
       id:'',
+      cart:[]
 
     }
   }
@@ -59,12 +62,14 @@ login = async (loginInfo) => {
     console.log("loginResponse", loginResponse);
     const loginJson = await loginResponse.json()
     console.log("loginJson", loginJson);
+    console.log(loginJson.cart)
 
     if(loginResponse.status === 200) {
         this.setState({
           loggedIn: true,
           loggedInUsername: loginJson.username,
-          id: loginJson._id
+          id: loginJson._id,
+          cart: loginJson.cart
       })
       }
   } catch(error) {
@@ -75,7 +80,7 @@ login = async (loginInfo) => {
 
 logout = async () => {
   try {
-    const url = process.env.REACT_APP_API_URL + "/api/v1/users/logout"
+    const url = ''
 
     const logoutResponse = await fetch(url, {
       credentials: 'include'
@@ -101,14 +106,14 @@ logout = async () => {
   render() {
     return (
       <div className="App">
-
             <div className="App">
                 {
                   this.state.loggedIn
                   ?
                   <React.Fragment>
+
                     <NavBar username={this.state.loggedInUsername} logout={this.logout} id={this.state.id} />
-                    <MerchContainer/>
+                    <MerchContainer cart={this.state.cart}/>
                   </React.Fragment>
                   :
                   <UserLogin

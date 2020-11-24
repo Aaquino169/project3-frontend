@@ -66,7 +66,10 @@ body{
     padding: 2px 10px
 }
 
-
+.header_title{
+    padding:10px 0;
+    margin:10px 0;
+}
 
 .hero{
     text-align: center;
@@ -88,7 +91,7 @@ body{
     padding-left: 10%;
 }
 
-.card{
+.card, .login-form{
     text-align: center;
     width: 300px;
     margin: 10px;
@@ -135,4 +138,63 @@ body{
 
 .login-container fieldset{
     border:none;
+}
+
+.add-merch{
+    text-align: center;
+    margin:0 auto;
+}
+
+.add-merch form{
+    margin:0 auto;
+}
+
+.add-merch fieldset{
+    border:none;
+    padding: 5px 0;
+}
+
+.add{
+    margin-top:20px;
+    width:200px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+.description{
+    height: 50px;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    margin:100px auto;
+}
+
+.log-in{
+    margin-top: 20px;
+    color:white;
+    font-size: 15px;
+    height: 25px;
+    width:70px;
+    border-radius: 8px;
+    border: none;
+    background-color: #A68077;
+    font-weight: bold;
+    padding: 2px 10px
+}
+
+.sign-up{
+    color:white;
+    font-size: 15px;
+    height: 25px;
+    width:70px;
+    border-radius: 8px;
+    border: none;
+    background-color: #A68077;
+    font-weight: bold;
+    padding: 2px 10px
 }

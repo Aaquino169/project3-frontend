@@ -21,9 +21,9 @@ store.get('/', (req,res) => {
     })
 })
 
-//create route
-store.post('/', isAuthenticated, async (req,res) => {
-    Merch.create( req.body, (err, createdMerch) => {
+//create route isAuthenticated,
+store.post('/create', async (req,res) => {
+    Merch.create(req.body, (err, createdMerch) => {
         if(err){
             res.status(400).json({ err: err.message})
         }
@@ -327,7 +327,7 @@ store.delete('/:id', (req,res) => {
 })
 
 //update route
-store.put('/:id', isAuthenticated, (req,res) => {
+store.put('/:id', (req,res) => {
     Merch.findOneAndUpdate( req.params.id, req.body, {new: true}, (err, updatedMerch) => {
         if (err) {
             res.status(400).json({ error: err.message })
@@ -338,7 +338,7 @@ store.put('/:id', isAuthenticated, (req,res) => {
 })
 
 //buy button
-store.put('/:id/buy', isAuthenticated, async (req,res) => {
+store.put('/buy/:id', async (req,res) => {
     try{
         const updatedMerch = await Merch.findByIdAndUpdate(req.params.id,
             {

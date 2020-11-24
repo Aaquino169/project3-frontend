@@ -45,27 +45,30 @@ handleSubmit = (event) => {
 
 render() {
     return (
-      <div>
+      <div class='login-form'>
         <h2>{this.state.action} here</h2>
         <form onSubmit={this.handleSubmit}>
-
-        <label>Username:</label>
-          <input
-            type="username"
-            name="username"
-            placeholder="Enter a Username"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter a password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-          <button type="Submit">
+        <div>
+            <label>Username:</label>
+              <input
+                type="username"
+                name="username"
+                placeholder="Enter a Username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+          </div>
+          <div>
+              <label>Password:</label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter a password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+          </div>
+          <button type="Submit" class='log-in'>
             { this.state.action === "Login" ? "Log in" : "Sign up"}
           </button>
         </form>
@@ -73,11 +76,11 @@ render() {
           this.state.action === "Login"
           ?
           <p>
-            Need an account? Sign up <button className="fake-link" onClick={this.switchForm}>here</button>
+            Need an account? Sign up <button class="sign-up" onClick={this.switchForm}>here</button>
           </p>
           :
           <p>
-            Already have an account? Log in <button className="fake-link" onClick={this.switchForm}>here</button>
+            Already have an account? Log in <button class="sign-up" onClick={this.switchForm}>here</button>
           </p>
 
         }
