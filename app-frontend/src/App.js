@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import HomeComponent from './Components/HomeComponent'
 import MerchContainer from './Components/MerchContainer'
 import NavBar from './Components/NavComponent'
-import Merch from './Components/Merch'
 import UserLogin from './Components/UserLogin'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+
 
 export default class App extends Component {
   constructor() {
@@ -13,17 +11,17 @@ export default class App extends Component {
 
     this.state = {
       loggedIn: false,
-      loggedInUsername: ''
+      loggedInUsername: '',
+      id:'',
+
     }
   }
-
 
 register = async (registerInfo) => {
 
   const url = 'http://localhost:8000/user/new'
 
   try {
-      console.log(registerInfo)
       const registerResponse = await fetch(url, {
           method: 'POST',
           body: JSON.stringify(registerInfo),
@@ -65,8 +63,9 @@ login = async (loginInfo) => {
     if(loginResponse.status === 200) {
         this.setState({
           loggedIn: true,
-          loggedInUsername: loginJson.data.username
-        })
+          loggedInUsername: loginJson.username,
+          id: loginJson._id
+      })
       }
   } catch(error) {
     console.error("Error trying to log in")
@@ -102,20 +101,23 @@ logout = async () => {
   render() {
     return (
       <div className="App">
-        {
-          this.state.loggedIn
-          ?
-          <React.Fragment>
-            <NavBar email={this.state.loggedInUserEmail} logout={this.logout} />
-            <HomeComponent />
-            <MerchContainer />
-          </React.Fragment>
-          :
-          <UserLogin
-            login={this.login}
-            register={this.register}
-          />
-        }
+
+            <div className="App">
+                {
+                  this.state.loggedIn
+                  ?
+                  <React.Fragment>
+                    <NavBar username={this.state.loggedInUsername} logout={this.logout} id={this.state.id} />
+                    <MerchContainer/>
+                  </React.Fragment>
+                  :
+                  <UserLogin
+                    login={this.login}
+                    register={this.register}
+                  />
+                }
+            </div>
+
       </div>
     );
   }

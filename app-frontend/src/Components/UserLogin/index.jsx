@@ -10,7 +10,7 @@ export default class LoginRegisterForm extends Component {
     this.state = {
       username: '',
       password: '',
-      action: 'Register' // this will track whether we are logging in or registering
+      action: 'Login'
     }
   }
 
