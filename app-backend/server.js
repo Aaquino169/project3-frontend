@@ -10,6 +10,7 @@ const app = express()
 
 const port = 8000
 
+<<<<<<< HEAD
 const whitelist = ["http://localhost:3000"]
 const corsOptions = {
     origin: (origin, callback) => {
@@ -21,8 +22,23 @@ const corsOptions = {
     }
 }
 app.use(cors(corsOptions))
-app.use(bodyParser.json());
+=======
+// const whitelist = ["http://localhost:3000"]
+// const corsOptions = {
+//     origin: (origin, callback) => {
+//       if (whitelist.indexOf(origin) !== -1) {
+//         callback(null, true)
+//       } else {
+//         callback(new Error('Not allowed by CORS'))
+//       }
+//     }
+// }
+// app.use(cors(corsOptions))
 
+
+>>>>>>> c3c3a1e6ec2430980220514025bb65a7653ff194
+app.use(bodyParser.json());
+-c
 
 //middleware for sessions
 app.use( session({ secret: 'i love shopping',resave: false,saveUninitialized: false}))
